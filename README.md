@@ -14,6 +14,8 @@
 ## Function
 * Find movie info
 * Search the Movie
+* Movie Detail Page
+* Connect with trailer with YOutube
 * Language filter
 * Genre Filter
 * Years filter
