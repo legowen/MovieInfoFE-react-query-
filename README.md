@@ -1,5 +1,5 @@
 # Movie Database Project
-<img width='70%' src="https://github.com/legowen/Portfolio/blob/main/img/dbmoviesinfo.png?raw=true"/>
+<img width='70%' src="https://github.com/legowen/Portfolio-img/blob/main/img/dbmoviesinfo.png?raw=true"/>
 * Demo: https://dbmoviesinfo.netlify.app
 <br>
 
