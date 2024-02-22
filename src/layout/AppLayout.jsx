@@ -1,57 +1,101 @@
-import React, { useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
+import React from "react";
+import { useState } from "react";
+// React-Router
+import { useNavigate, Outlet } from "react-router-dom";
+// Style
+import "./AppLayout.style.css";
+// Bootstrap
+import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+// Image
+import logo from "../img/layout/logo.png";
 
 const AppLayout = () => {
   const [keyword, setKeyword] = useState("");
+
+  // 이동
   const navigate = useNavigate();
+
+  // Home 페이지 이동
+  const goToHome = () => {
+    navigate("/");
+  };
+
+  // Movies 페이지 이동
+  const goToMovies = () => {
+    navigate("/Movies");
+  };
+
+  // keyword 저장 및 찾기
   const searchByKeyword = (event) => {
     event.preventDefault();
+
     navigate(`/movies?q=${keyword}`);
+    setKeyword("");
   };
+
   return (
-    <div>
-      <Navbar expand="lg" className="px-5 bg-black" data-bs-theme="dark">
-        <Link to={"/"}>
-          <Navbar.Brand className="me-4">
-            <img src="/logo.png" width={93} />
-          </Navbar.Brand>
-        </Link>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Link
-              to="/"
-              className="text-white me-4 link-offset-2 link-underline link-underline-opacity-0"
-            >
-              Home
-            </Link>
-            <Link
-              to="/movies"
-              className="text-white link-offset-2 link-underline link-underline-opacity-0"
-            >
-              Movies
-            </Link>
-          </Nav>
-          <Form className="d-flex" onSubmit={searchByKeyword}>
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-              value={keyword}
-              onChange={(event) => setKeyword(event.target.value)}
-            />
-            <Button variant="outline-danger" type="submit">
-              Search
-            </Button>
-          </Form>
-        </Navbar.Collapse>
-      </Navbar>
+    <div className="netflix">
+      <div className="header">
+        <Container>
+          <Navbar expand="lg">
+            <Navbar.Brand className="header_logo" onClick={goToHome}>
+              <img src={logo} alt="logo" />
+            </Navbar.Brand>
+
+            <Navbar.Toggle type="button" className="toggle_btn" />
+            <Navbar.Collapse>
+              <Nav className="me-auto">
+                <Nav.Link onClick={goToHome} className="text-white">
+                  Home
+                </Nav.Link>
+                <Nav.Link onClick={goToMovies} className="text-white">
+                  Movies
+                </Nav.Link>
+              </Nav>
+              <Form
+                className="d-flex"
+                onSubmit={(event) => searchByKeyword(event)}
+              >
+                <Form.Control
+                  type="search"
+                  onChange={(event) => setKeyword(event.target.value)}
+                  value={keyword}
+                  placeholder="Search"
+                />
+                <Button type="submit" variant="danger">
+                  Search
+                </Button>
+              </Form>
+            </Navbar.Collapse>
+          </Navbar>
+        </Container>
+      </div>
+
       <Outlet />
+
+      <div className="footer">
+        <Container>
+          <div className="footer_info">
+            <Navbar.Brand>
+              <img src={logo} alt="logo" />
+            </Navbar.Brand>
+            <ul>
+              <li>Movie DataBase Info</li>
+              <li>Representative : Owen Kim</li>
+              <li>Github : https://github.com/legowen</li>
+            </ul>
+            <div>
+              <p>
+              The website utilizing the TMDB API is not intended for commercial purposes.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </div>
     </div>
   );
 };

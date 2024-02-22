@@ -1,0 +1,20 @@
+/* Review */
+.review_content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;;
+  }
+  
+  .expand {
+    overflow: auto;
+  }
+  
+  .fold {
+    overflow: hidden;
+    word-break: break-word;
+    text-overflow: ellipsis;
+  
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }

@@ -1,24 +1,33 @@
-import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
-import MoviePage from "./pages/MoviePage/MoviePage";
-import MovieDetailPage from "./pages/MovieDetailPage/MovieDetailPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import React from "react";
+// React-Router
+import { Routes, Route } from "react-router-dom";
+// Layout
 import AppLayout from "./layout/AppLayout";
-import "bootstrap/dist/css/bootstrap.min.css";
+// Pages
+import Home from "./pages/Home/Home";
+import Movies from "./pages/Movies/Movies";
+import MovieDetail from "./pages/MovieDetail/MovieDetail";
+import NotFound from "./pages/NotFound/NotFound";
+// Style
 import "./App.css";
-function App() {
+// Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<AppLayout />}>
-        <Route index element={<HomePage />} />
+        <Route index element={<Home />} />
+
         <Route path="movies">
-          <Route index element={<MoviePage />} />
-          <Route path=":id" element={<MovieDetailPage />} />
+          <Route index element={<Movies />} />
+          <Route path=":id" element={<MovieDetail />} />
         </Route>
       </Route>
-      <Route path="*" element={<NotFoundPage />} />
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
-}
+};
 
 export default App;

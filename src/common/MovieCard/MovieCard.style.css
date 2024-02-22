@@ -1,32 +1,72 @@
-.movie-card {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    cursor: pointer;
-    transition: 0.5s;
-  }
-  .overlay {
-    width: 100%;
-    height: 100%;
-    background: rgba(43, 41, 41, 0.9);
-    opacity: 0;
-    transition: all 1s;
-    color: white;
-    font-weight: bold;
-    overflow-wrap: break-word;
-  }
-  .overlay h1 {
-    font-size: 2rem;
-    padding-bottom: 10px;
-  }
-  @media (min-width: 480px) {
-    .movie-card:hover {
-      /* transform-origin: left center; */
-      transform: scale(1.1) translateZ(20px);
-      z-index: 2;
-    }
-  }
+/* MovieCard */
+.movie_card {
+  padding-bottom: 1rem;
+}
+
+.movie_img_card {
+  cursor: pointer;
   
-  .overlay:hover {
-    opacity: 1;
-  }
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition: all 0.5s;
+}
+
+.movie_img_card:hover {
+  box-shadow: 0px 0px 15px rgb(150, 0, 0);
+}
+
+.overlay {
+  opacity: 0;
+
+  padding: 1rem;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 5, 5, 0.5);
+
+  transition: all 0.5s;
+}
+
+.overlay p {
+  overflow: hidden;
+  word-break: break-word;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 11;
+  -webkit-box-orient: vertical;
+}
+
+.overlay:hover {
+  opacity: 1;
+}
+
+.movie_img_card_info {
+  margin-top: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.movie_img_card_info h3 {
+  font-size: 1rem;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.movie_img_card_info ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie_img_card_info ul li:nth-child(1) {
+  display: flex;
+  align-items: center;
+}

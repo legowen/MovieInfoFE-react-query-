@@ -1,16 +1,17 @@
+// React-QUERY
 import { useQuery } from "@tanstack/react-query";
+// Utils
 import api from "../utils/api";
 
-const fetchUpComingMovies = () => {
-  return api.get(`/movie/upcoming?language=en-US&page=1`);
+// Upcoming Movie Api 호출
+const fetchUpcomingMovies = () => {
+  return api.get("/movie/upcoming");
 };
 
 export const useUpcomingMoviesQuery = () => {
   return useQuery({
     queryKey: ["movie-upcoming"],
-    queryFn: fetchUpComingMovies,
-    select: (data) => {
-      return data.data;
-    },
+    queryFn: fetchUpcomingMovies,
+    select: (result) => result.data,
   });
 };

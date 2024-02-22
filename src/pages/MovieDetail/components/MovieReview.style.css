@@ -1,0 +1,31 @@
+/* MovieReview */
+.review_relatedMovie_tab {
+    --bs-nav-link-color: red !important;
+    --bs-nav-link-hover-color: red !important;
+  }
+  
+  .review_tab ul li {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .review_tab ul li:last-child {
+    border: 0;
+  }
+  
+  .related_tab > div {
+    padding: 1.5rem 0 0;
+  
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .related_tab > div > div:nth-child(odd) {
+    padding: 0 1rem 0 0;
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .related_tab > div > div:nth-child(odd) {
+      padding: 0
+    }
+  }
