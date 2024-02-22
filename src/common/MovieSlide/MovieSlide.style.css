@@ -1,0 +1,17 @@
+/* MovieSlide */
+.carousel_container {
+
+}
+
+.carousel_movie_slider {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.react-multiple-carousel__arrow--left  {
+  left: 0 !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: 0 !important;
+}

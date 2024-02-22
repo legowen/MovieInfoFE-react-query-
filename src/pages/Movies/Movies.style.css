@@ -1,0 +1,58 @@
+/* Movies */
+.dropdown_list {
+  margin: 1rem 0;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pagination_list .pagination {
+  --bs-pagination-color: red !important;
+  --bs-pagination-bg: transparent !important;
+
+  --bs-pagination-border-width: transparent !important;
+  --bs-pagination-border-color: transparent !important;
+
+  --bs-pagination-hover-color: red !important;
+  --bs-pagination-hover-bg: transparent !important;
+  --bs-pagination-hover-border-color: transparent !important;
+
+  --bs-pagination-focus-color: red !important;
+  --bs-pagination-focus-bg: transparent !important;
+  --bs-pagination-focus-box-shadow: transparent !important;
+  
+  --bs-pagination-active-bg: red !important;
+  --bs-pagination-active-border-color: transparent !important;
+
+  --bs-pagination-disabled-color: red !important;
+  --bs-pagination-disabled-bg: transparent !important;
+  --bs-pagination-disabled-border-color: transparent !important;
+
+  margin-top: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pagination li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+}
+
+.pagination a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+}

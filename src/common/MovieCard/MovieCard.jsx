@@ -1,52 +1,52 @@
 import React from "react";
+// Style
 import "./MovieCard.style.css";
-import Badge from "react-bootstrap/Badge";
+// React-Router
 import { useNavigate } from "react-router-dom";
+// React_Icon
+import { FaStar } from "react-icons/fa";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
+
 const MovieCard = ({ movie }) => {
+  // Movies Detail 페이지 이동
   const navigate = useNavigate();
-  const { data: genres } = useMovieGenreQuery();
+
+  const goToMovieDetail = () => {
+    navigate(`/movies/${movie.id}`)
+  }
+
+  // 장르 데이터 필터
+  const {data: genreData} = useMovieGenreQuery();
 
   const showGenre = (genreIdList) => {
-    if (!genres) return [];
-    const genresNameList = genreIdList.map((id) => {
-      const genreObj = genres.find((genre) => genre.id === id);
+    if(!genreData) return []
+
+    const genreNameList = genreIdList.map((id) => {
+      const genreObj = genreData.find((genre) => genre.id === id)
+
       return genreObj.name;
-    });
-    return genresNameList;
-  };
+    })
+
+    return genreNameList
+  }
 
   return (
-    <div
-      className="movie-card"
-      style={{
-        backgroundImage:
-          "url(" +
-          `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}` +
-          ")",
-      }}
-      onClick={() => navigate(`/movies/${movie.id}`)}
-    >
-      <div className="overlay p-2">
-        <div>
-          <h1>{movie.title}</h1>
-          <div>
-            {showGenre(movie.genre_ids).map((genre, index) => (
-              <Badge bg="danger" key={index} className="me-1">
-                {genre}
-              </Badge>
-            ))}
-          </div>
+    <div className="movie_card">
+      <div className="movie_img_card" onClick={goToMovieDetail} style={{backgroundImage:"url(" +`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}` +")"}}>
+        <div className="overlay">
+          <p>{movie.overview}</p>
         </div>
-        <div className="mt-2">
-          <img src="/imdb.png" width={20} className="me-1" />
-          {movie.popularity}
-          {movie.adult ? (
-            <img src={"/over18.svg"} width={20} />
-          ) : (
-            <img src={"/under18.svg"} width={20} className="ms-2" />
-          )}
-        </div>
+      </div>
+
+      <div className="movie_img_card_info">
+        <h3>{movie.title}</h3>
+        <ul>
+          <li>
+            <FaStar />
+            {movie.vote_average}
+          </li>
+          <li>{movie.adult ? "Over18" : "Under18"}</li>
+        </ul>
       </div>
     </div>
   );

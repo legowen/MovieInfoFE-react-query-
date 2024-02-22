@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
-// Components
-import Loading from "../Loading/Loading";
-import Error from "../Error/Error";
+// components
+import Loading from "../../../../common/Loading/Loading";
+import Error from "../../../../common/Error/Error";
 // Hooks
-import { useMovieVideoQuery } from "../../hooks/useMovieVideo";
+import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
+import { useMovieVideoQuery } from "../../../../hooks/useMovieVideo";
 // Style
-import "./Banner.style.css";
+import "./HomeBanner.style.css";
 // Bootstrap
 import Container from "react-bootstrap/Container";
 import Button from 'react-bootstrap/Button';
@@ -14,7 +15,7 @@ import Modal from 'react-bootstrap/Modal';
 // Youtube
 import YouTube from 'react-youtube';
 
-const Banner = ({ data }) => {
+const HomeBanner = () => {
   // 모달 관련 state
   const [lgShow, setLgShow] = useState(false);
 
@@ -26,9 +27,13 @@ const Banner = ({ data }) => {
     },
   };
 
-  // Movie Video 데이터
-  const { isLoading, data: videoData, isError, error } = useMovieVideoQuery(data && data.id);
+  // 데이터
+  const { isLoading, data, isError, error } = usePopularMoviesQuery();
 
+  // Movie Video 데이터
+  const { data: videoData } = useMovieVideoQuery(data && data.results[0].id);
+
+  // 로딩 처리
   if (isLoading) {
     return <Loading />;
   }
@@ -38,15 +43,13 @@ const Banner = ({ data }) => {
     return <Error error={error} />;
   }
 
-  console.log(videoData.results[0].key)
-
   return (
     <div
-      className="banner"
-      style={{backgroundImage:"url("+`https://media.themoviedb.org/t/p/w533_and_h300_bestv2${data && data.poster_path}`+")"}}>
-      <Container className="banner_text">
-        <h2>{data && data.title}</h2>
-        <p>{data && data.overview}</p>
+      className="home_banner"
+      style={{backgroundImage:"url("+`https://media.themoviedb.org/t/p/w533_and_h300_bestv2${data && data.results[0].poster_path}`+")"}}>
+      <Container className="home_banner_text">
+        <h2>{data && data.results[0].title}</h2>
+        <p>{data && data.results[0].overview}</p>
         <Button onClick={() => setLgShow(true)} className="video_btn btn btn-danger" >▶ Play</Button>
 
         <Modal
@@ -62,7 +65,7 @@ const Banner = ({ data }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="bg-dark" >
-          <YouTube videoId={videoData.results[0].key} opts={opts} className="youtube" />
+          <YouTube videoId={videoData && videoData.results[0].key} opts={opts} className="youtube" />
         </Modal.Body>
         </Modal>
       </Container>
@@ -70,4 +73,4 @@ const Banner = ({ data }) => {
   );
 };
 
-export default Banner;
+export default HomeBanner;
