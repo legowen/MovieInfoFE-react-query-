@@ -42,8 +42,10 @@ const AppLayout = () => {
       <div className="header">
         <Container>
           <Navbar expand="lg">
-            <Navbar.Brand className="header_logo" onClick={goToHome}>
-              <img src={logo} alt="logo" />
+            <Navbar.Brand onClick={goToHome} className="header_logo">
+              <a href="/">
+                <img src={logo} alt="logo" />
+              </a>
             </Navbar.Brand>
 
             <Navbar.Toggle type="button" className="toggle_btn" />
@@ -90,7 +92,8 @@ const AppLayout = () => {
             </ul>
             <div>
               <p>
-              The website utilizing the TMDB API is not intended for commercial purposes.
+                The website utilizing the TMDB API is not intended for
+                commercial purposes.
               </p>
             </div>
           </div>
