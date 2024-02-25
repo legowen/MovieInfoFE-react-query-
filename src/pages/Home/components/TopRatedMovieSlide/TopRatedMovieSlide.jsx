@@ -13,12 +13,12 @@ import Container from "react-bootstrap/Container";
 const TopRatedMovieSlide = () => {
   const { isLoading, data, isError, error } = useTopRatedMoviesQuery();
 
-  // 로딩 처리
+  // Loading Spinner
   if (isLoading) {
     return <Loading />;
   }
   
-  // 에러 처리
+  // Error Handling
   if (isError) {
     return <Error error={error} />;
   }

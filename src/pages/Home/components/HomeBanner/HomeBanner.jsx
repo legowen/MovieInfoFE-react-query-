@@ -16,7 +16,7 @@ import Modal from 'react-bootstrap/Modal';
 import YouTube from 'react-youtube';
 
 const HomeBanner = () => {
-  // 모달 관련 state
+  // Modal-related state
   const [lgShow, setLgShow] = useState(false);
 
   const opts = {
@@ -27,18 +27,18 @@ const HomeBanner = () => {
     },
   };
 
-  // 데이터
+  // Data
   const { isLoading, data, isError, error } = usePopularMoviesQuery();
 
-  // Movie Video 데이터
+  // Movie Video Data
   const { data: videoData } = useMovieVideoQuery(data && data.results[0].id);
 
-  // 로딩 처리
+  // Loading Spinner
   if (isLoading) {
     return <Loading />;
   }
 
-  // 에러 처리
+  // Error Handling
   if (isError) {
     return <Error error={error} />;
   }

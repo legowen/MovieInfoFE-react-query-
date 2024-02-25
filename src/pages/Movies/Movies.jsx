@@ -18,33 +18,33 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 const Movies = () => {
-  // 영화 관련 state
+  // Movie-Related state
   const [movieData, setMovieData] = useState(null);
 
-  // 쿼리 값 기능
+  // Query Value
   const [query, setQuery] = useSearchParams();
 
   const keyword = query.get("q");
 
-  // 페이지 기능 커스텀
+  // Custom Page
   const [page, setPage] = useState(1);
 
-  // 서치 영화 데이터
+  // Movie Data Search
   const { isLoading, data, isError, error } = useSearchMovieQuery({ keyword, page });
 
-  // 영화 관련 useEffect
+  // Movie Related useEffect
   useEffect(() => {
     if (data) {
       setMovieData(data);
     }
   }, [data]);
 
-  // 로딩 처리
+  // Loading Spinner
   if (isLoading) {
     return <Loading />;
   }
 
-  // 에러 처리
+  // Error Handling
   if (isError) {
     return <Error error={error} />;
   }

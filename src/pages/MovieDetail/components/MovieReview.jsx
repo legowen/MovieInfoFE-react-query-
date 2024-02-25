@@ -17,18 +17,18 @@ import Tabs from "react-bootstrap/Tabs";
 import Col from "react-bootstrap/Col";
 
 const MovieReview = ({ id }) => {
-  // Movie Review 데이터
+  // Movie Review Data
   const { isLoading, data: reviewData, isError, error } = useMovieReviewQuery(id);
 
-  // Movie 관련 영화 데이터
+  // Recommended Movie Data
   const { data: recommendationsData } = useRecommendationsQuery(id);
 
-  // 로딩 처리
+  // Loading Spinner
   if (isLoading) {
     return <Loading />;
   }
 
-  // 에러 처리
+  // Error Handling
   if (isError) {
     return <Error error={error} />;
   }

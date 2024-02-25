@@ -16,20 +16,20 @@ import logo from "../img/layout/logo.png";
 const AppLayout = () => {
   const [keyword, setKeyword] = useState("");
 
-  // 이동
+  // Navigate 
   const navigate = useNavigate();
 
-  // Home 페이지 이동
+  // Navigate to Home
   const goToHome = () => {
     navigate("/");
   };
 
-  // Movies 페이지 이동
+  // Navigate to Movies
   const goToMovies = () => {
     navigate("/Movies");
   };
 
-  // keyword 저장 및 찾기
+  // Save and Search by Keywird
   const searchByKeyword = (event) => {
     event.preventDefault();
 

@@ -14,7 +14,7 @@ const Review = ({ review }) => {
       {
         review.content.length > 680 ? (
           <p onClick={() => setReviewExpand(!reviewExpand)}>{
-            reviewExpand ? "접기" : "더보기"
+            reviewExpand ? "fold" : "More"
           }</p>
         ) : (
           <></>

@@ -8,14 +8,14 @@ import { FaStar } from "react-icons/fa";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 
 const MovieCard = ({ movie }) => {
-  // Movies Detail 페이지 이동
+  // Navigate to Movies Detail 
   const navigate = useNavigate();
 
   const goToMovieDetail = () => {
     navigate(`/movies/${movie.id}`)
   }
 
-  // 장르 데이터 필터
+  // Genre Data Filter
   const {data: genreData} = useMovieGenreQuery();
 
   const showGenre = (genreIdList) => {

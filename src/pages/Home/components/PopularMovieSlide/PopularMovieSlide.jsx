@@ -11,15 +11,15 @@ import { responsive } from "../../../../constants/responsive";
 import Container from "react-bootstrap/Container";
 
 const PopularMovieSlide = () => {
-  // 데이터
+  // Data
   const { isLoading, data, isError, error } = usePopularMoviesQuery();
 
-  // 로딩 처리
+  // Loading Spinner
   if (isLoading) {
     return <Loading />;
   }
   
-  // 에러 처리
+  // Error Handling
   if (isError) {
     return <Error error={error} />;
   }

@@ -15,7 +15,7 @@ import Modal from 'react-bootstrap/Modal';
 import YouTube from 'react-youtube';
 
 const Banner = ({ data }) => {
-  // 모달 관련 state
+  // Modal-Related state
   const [lgShow, setLgShow] = useState(false);
 
   const opts = {
@@ -26,14 +26,14 @@ const Banner = ({ data }) => {
     },
   };
 
-  // Movie Video 데이터
+  // Movie Video Data
   const { isLoading, data: videoData, isError, error } = useMovieVideoQuery(data && data.id);
 
   if (isLoading) {
     return <Loading />;
   }
 
-  // 에러 처리
+  // Error Handling
   if (isError) {
     return <Error error={error} />;
   }

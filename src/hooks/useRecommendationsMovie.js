@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 // Utils
 import api from "../utils/api";
 
-// Movie List Genre Api 호출
+// Call Movie List Genre Api 
 const fetchMovieRecommendations = (queryData) => {
   const id = queryData.queryKey[1]
 

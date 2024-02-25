@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 // Utils
 import api from "../utils/api";
 
-// Upcoming Movie Api 호출
+// Call Movie List Genre Api 
 const fetchUpcomingMovies = () => {
   return api.get("/movie/upcoming");
 };
