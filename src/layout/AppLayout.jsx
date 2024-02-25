@@ -38,7 +38,7 @@ const AppLayout = () => {
   };
 
   return (
-    <div className="netflix">
+    <div className="MovieinfoDB">
       <div className="header">
         <Container>
           <Navbar expand="lg">

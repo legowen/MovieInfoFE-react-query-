@@ -9,7 +9,7 @@ import "./Home.style.css";
 
 const Home = () => {
   return (
-    <div className="netflix_home">
+    <div className="MovieDB_home">
       <Banner />
       <PopularMovieSlide />
       <TopRatedMovieSlide />
