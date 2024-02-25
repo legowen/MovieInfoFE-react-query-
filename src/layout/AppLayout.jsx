@@ -16,20 +16,20 @@ import logo from "../img/layout/logo.png";
 const AppLayout = () => {
   const [keyword, setKeyword] = useState("");
 
-  // 이동
+  // Navigate 
   const navigate = useNavigate();
 
-  // Home 페이지 이동
+  // Navigate to Home
   const goToHome = () => {
     navigate("/");
   };
 
-  // Movies 페이지 이동
+  // Navigate to Movies
   const goToMovies = () => {
     navigate("/Movies");
   };
 
-  // keyword 저장 및 찾기
+  // Save and Search by Keywird
   const searchByKeyword = (event) => {
     event.preventDefault();
 
@@ -42,8 +42,10 @@ const AppLayout = () => {
       <div className="header">
         <Container>
           <Navbar expand="lg">
-            <Navbar.Brand className="header_logo" onClick={goToHome}>
-              <img src={logo} alt="logo" />
+            <Navbar.Brand onClick={goToHome} className="header_logo">
+              <a href="/">
+                <img src={logo} alt="logo" />
+              </a>
             </Navbar.Brand>
 
             <Navbar.Toggle type="button" className="toggle_btn" />
@@ -90,7 +92,8 @@ const AppLayout = () => {
             </ul>
             <div>
               <p>
-              The website utilizing the TMDB API is not intended for commercial purposes.
+                The website utilizing the TMDB API is not intended for
+                commercial purposes.
               </p>
             </div>
           </div>

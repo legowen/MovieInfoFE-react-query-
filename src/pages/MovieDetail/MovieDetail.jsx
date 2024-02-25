@@ -22,18 +22,18 @@ import Badge from 'react-bootstrap/Badge';
 import MovieReview from "./components/MovieReview";
 
 const MovieDetail = () => {
-  // Movie Detail 주소
+  // Movie Detail Id
   const { id } = useParams();
 
-  // Movie Detail 데이터
+  // Movie Detail Data
   const { isLoading, data, isError, error } = useDetailMovieQuery(id);
 
-  // 로딩 처리
+  // Loading Spinner
   if (isLoading) {
     return <Loading />;
   }
 
-  // 에러 처리
+  // Error Handling
   if (isError) {
     return <Error error={error} />;
   }
@@ -45,7 +45,7 @@ const MovieDetail = () => {
       <Container>
         <Row className="infomation">
           <Col lg={6} xs={12} className="image_infomation_box">
-            <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${data && data.poster_path}`} alt="영화 포스터"/>
+            <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${data && data.poster_path}`} alt="Movie Poster"/>
           </Col>
 
           <Col lg={6} xs={12} className="text_infomation_box">
@@ -77,11 +77,11 @@ const MovieDetail = () => {
             <ul className="sub_info">
               <li>
                 <Badge bg="danger">Budget</Badge>
-                {numberWithCommas(data.budget)} Won
+                $ {numberWithCommas(data.budget)} 
               </li>
               <li>
                 <Badge bg="danger">Revenue</Badge>
-                {numberWithCommas(data.revenue)} Won
+                $ {numberWithCommas(data.revenue)} 
               </li>
               <li>
                 <Badge bg="danger">Release Date</Badge>

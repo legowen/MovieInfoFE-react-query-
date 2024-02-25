@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 // Utils
 import api from "../utils/api";
 
-// Movie List Genre Api 호출
+// Call Movie List Genre Api 
 const fetchSearchMovie = ({ keyword, page }) => {
   return keyword
     ? api.get(`/search/movie?query=${keyword}&page=${page}`)
